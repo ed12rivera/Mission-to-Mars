@@ -9,7 +9,7 @@ def scrape_all():
     # Initiate the headless driver for deployment
     # Set the executable path and initialize the chrome browser in splinter
     executable_path = {'executable_path': ChromeDriverManager().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
+    browser = Browser('chrome', **executable_path, headless=True)
 
     news_title, news_paragraph = mars_news(browser)
 
@@ -78,7 +78,7 @@ def mars_facts():
     df.set_index('description', inplace=True)
 
     # Convert dataframe into HTML format, add bootstrap
-    return df.to_html
+    return df.to_html()
     
 if __name__ == "__main__":
     # If running as script, print scraped data
