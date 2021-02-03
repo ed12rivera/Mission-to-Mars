@@ -21,7 +21,7 @@ def scrape_all():
         "last_modified": dt.datetime.now()
     }
 
-    # Stop webdriver and return datae
+    # Stop webdriver and return data
     browser.quit()
     return data
 
