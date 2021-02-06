@@ -9,14 +9,18 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     />
+    <style>
+      tr:nth-child(even) {background-color: #bdbdbd;}
+      tr:nth-child(odd) {background-color: #ffffff;}      }
+    </style>
   </head>
   <body>
-    <div class="container">
+    <div class="p-3 mb-2 bg-warning text-dark">
       <!-- Add Jumbotron to Header -->
-      <div class="jumbotron text-center">
+      <div class="jumbotron text-center" style="background-color:rgb(79, 151, 211)">
         <h1>Mission to Mars</h1>
         <!-- Add a button to activate scraping script -->
-        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        <p><a class="btn btn-danger btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
       </div>
 
       <!-- Add section for Mars News -->
@@ -45,11 +49,12 @@
           />
         </div>
 
-        <div class="col-md-4">
+        <div class="table table-striped">
           <!-- Mars Facts -->
           <div class="row" id="mars-facts">
             <h4>Mars Facts</h4>
             {{ mars.facts | safe }}
+            <table class="table table-striped"></table>
           </div>
         </div>
       </div>
@@ -60,7 +65,7 @@
           <h2 class="text-center">Mars Hemispheres</h2>
         </div>
 
-        {% for hemisphere in mars.hemispheres %}
+        {% for hemisphere in mars.hemisphere_images %}
         <div class="col-md-6">
           <div class="thumbnail">
             <img src="{{hemisphere.img_url | default('static/images/error.png', true)}}" alt="...">
